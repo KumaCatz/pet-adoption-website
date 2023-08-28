@@ -1,7 +1,13 @@
+import { useState } from "react"
+
 function SignupModal() {
+  const [isShow, setIsShow] = useState<boolean>(false)
 
   return (
-    <form>
+    <div>
+    <button onClick={() => setIsShow(!isShow)}>create new account</button>
+    { isShow &&
+      <form>
       Provide email adress:
       <input type='email' />
       Provide password:
@@ -14,7 +20,9 @@ function SignupModal() {
       <input type='text' />
       Provide phone number:
       <input type='tel' />
-    </form>
+      </form>
+    }
+    </div>
   )
 }
 
