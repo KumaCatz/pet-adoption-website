@@ -5,11 +5,12 @@ import { useState } from 'react'
 
 function LoginModal() {
   const [isShow, setIsShow] = useState<boolean>(false)
+  const [isUser, setIsUser] = useState<boolean>(false)
   const router = useRouter()
 
-  const validate = (e: React.FormEvent<HTMLFormElement>) => {
+  const validateUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    router.push('/userpage')
+    setIsUser(true)
 
     return (
       console.log('hi')
@@ -20,7 +21,7 @@ function LoginModal() {
     <div>
       <button onClick={() => setIsShow(!isShow)}>Login</button>
       { isShow &&
-      <form onSubmit={ validate }>
+      <form onSubmit={ validateUser }>
       Provide login:
       <input type='text' />
       Provide password:
