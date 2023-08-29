@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, SetStateAction } from 'react'
-import { useRouter } from 'next/navigation'
 
 type Props = {
   isLogged: boolean;

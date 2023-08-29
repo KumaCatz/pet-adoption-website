@@ -10,9 +10,8 @@ import SignupModal from '@/components/SignupModal'
 import Welcome from '@/components/Welcome'
 
 export default function Homepage() {
-
   const [isLogged, setIsLogged] = useState<boolean>(false)
-  console.log(isLogged)
+  // const [userData, setUserData] actually reducer for userData
 
   return (
     <>
