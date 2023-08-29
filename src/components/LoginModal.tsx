@@ -1,16 +1,21 @@
 'use client'
 
+import React, { useState, SetStateAction } from 'react'
 import { useRouter } from 'next/navigation'
-import { useState } from 'react'
 
-function LoginModal() {
-  const [isShow, setIsShow] = useState<boolean>(false)
-  const [isUser, setIsUser] = useState<boolean>(false)
-  const router = useRouter()
+type Props = {
+  isLogged: boolean;
+  setIsLogged: React.Dispatch<SetStateAction<boolean>>;
+}
+
+const LoginModal: React.FC<Props> = ({
+  isLogged, setIsLogged
+}) => {
+  const [isShow, setIsShow] = useState(false)
 
   const validateUser = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    setIsUser(true)
+    setIsLogged(!isLogged)
 
     return (
       console.log('hi')
