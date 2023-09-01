@@ -9,9 +9,12 @@ export default function SearchBar() {
       </select>
     <div>Advanced Search</div>
       <label htmlFor="status">Status:</label>
-      <input type='checkbox' name='fostered' />fostered
-      <input type='checkbox' name='adopted' />adopted
-      <input type='checkbox' name='available' />available      
+      <input type='radio'/>
+      <label>fostered</label>
+      <input type='radio'/>
+      <label>adopted</label>
+      <input type='radio'/>
+      <label>available</label>    
     </>
   )
 }
