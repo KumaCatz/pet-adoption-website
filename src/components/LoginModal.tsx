@@ -1,31 +1,20 @@
 'use client'
 
 import React, { useState, SetStateAction } from 'react'
+import Link from 'next/link'
 
 type Props = {
   isLogged: boolean;
   setIsLogged: React.Dispatch<SetStateAction<boolean>>;
+  isShow: boolean;
 }
 
-const LoginModal: React.FC<Props> = ({
-  isLogged, setIsLogged
-}) => {
-  const [isShow, setIsShow] = useState(false)
-
-  const validateUser = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    setIsLogged(!isLogged)
-
-    return (
-      console.log('hi')
-    )
-  }
+const LoginModal: React.FC<Props> = ({ isLogged, setIsLogged, isShow }) => {
 
   return (
     <div>
-      <button onClick={() => setIsShow(!isShow)}>Login</button>
       { isShow &&
-      <form onSubmit={ validateUser }>
+      <form onSubmit={() => {setIsLogged(!isLogged)}}>
       Provide login:
       <input type='text' />
       Provide password:

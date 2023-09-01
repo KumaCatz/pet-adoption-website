@@ -1,16 +1,16 @@
-export const loginReducerActions = {
+export const userDataReducerActions = {
   COMPARE_USERNAME: 'COMPARE_USERNAME',
   COMPARE_PASSWORD: 'COMPARE_PASSWORD',
   SORT_BY_DATE: 'SORT_BY_DATE',
 }
 
-export  function loginReducer(state, action) {
+export  function userDataReducer(state, action) {
   switch (action.type) {
-    case loginReducerActions.COMPARE_USERNAME:
+    case userDataReducerActions.COMPARE_USERNAME:
       return [action.data, ...state]
-    case loginReducerActions.COMPARE_PASSWORD:
+    case userDataReducerActions.COMPARE_PASSWORD:
       return state.filter((item) => item !== action.data)
-    case loginReducerActions.SORT_BY_DATE:
+    case userDataReducerActions.SORT_BY_DATE:
       return state.sort((a, b) => a.date - b.date)
     default:
       throw new Error()

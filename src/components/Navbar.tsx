@@ -1,3 +1,5 @@
+//component may not be necessary
+
 'use client'
 
 import Link from "next/link"
@@ -19,14 +21,6 @@ function Navbar() {
         </li>
         <li>
           <Link href='/mypets'>My Pets</Link>
-        </li>
-        <li onClick={() => isSignupModal(!signupModal)}>
-          Not a member?
-          {signupModal ? <SignupModal /> : null}
-        </li>
-        <li>
-          <button onClick={() => isLoginModal(!loginModal)}>Log In</button>
-          {loginModal ? <LoginModal /> : null}
         </li>
       </ul>
     </nav>
