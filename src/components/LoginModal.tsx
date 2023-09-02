@@ -1,25 +1,27 @@
 'use client'
 
-import { redirect } from 'next/navigation'
+import React, { useState, SetStateAction } from 'react'
+import Link from 'next/link'
 
-function LoginModal() {
+type Props = {
+  isLogged: boolean;
+  setIsLogged: React.Dispatch<SetStateAction<boolean>>;
+  isShow: boolean;
+}
 
-  const validate = () => {
-
-    return (
-      console.log('hi')
-    )
-  }
+const LoginModal: React.FC<Props> = ({ isLogged, setIsLogged, isShow }) => {
 
   return (
     <div>
-      <form onSubmit={validate}>
-        Provide login:
-        <input type='text' />
-        Provide password:
-        <input type='password' />
-        <button type='submit'>Submit</button>
+      { isShow &&
+      <form onSubmit={() => {setIsLogged(!isLogged)}}>
+      Provide login:
+      <input type='text' />
+      Provide password:
+      <input type='password' />
+      <button type='submit'>Submit</button>
       </form>
+      }
     </div>
   )
 }
