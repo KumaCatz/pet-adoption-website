@@ -1,8 +1,8 @@
-function Searchbutton () {
+function SearchButton () {
 
   return (
     <button>Start Searching</button>
   )
 }
 
-export default Searchbutton
+export default SearchButton

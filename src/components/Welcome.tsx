@@ -1,6 +1,9 @@
 const Welcome = () => {
   return (
-    <div>you're logged in :)</div>
+    <>
+      <div>Welcome firstName lastName! :)</div>
+      <button>Search</button>
+    </>
   )
 }
 
