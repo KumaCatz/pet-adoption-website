@@ -9,17 +9,16 @@ import Description from "@/components/Description"
 import LoginModal from "@/components/LoginModal"
 import SearchButton from '@/components/SearchButton'
 import SignupModal from '@/components/SignupModal'
-import Welcome from '@/components/Welcome'
+import Welcome from '../components/Welcome'
 
 import userDataReducerContext from './contexts/userDataReducerContext.js'
 
-import { userDataReducer, userDataReducerActions } from './reducers/userDataReducer'
+import { userDataReducer, userDataReducerActions } from './reducers/userDataReducer.js'
 
 export default function Homepage() {
-  const [isLogged, setIsLogged] = useState<boolean>(false)
+  const [isLogged, setIsLogged] = useState(false)
   const [isShow, setIsShow] = useState(false)
-  const [userData, dispatchUserData] = useReducer(userDataReducer, {user: {}})
-  // const [userData, setUserData] actually reducer for userData
+  const [userData, dispatchUserData] = useReducer(userDataReducer, {})
 
   return (
     <userDataReducerContext.Provider value={{userData, dispatchUserData}}>

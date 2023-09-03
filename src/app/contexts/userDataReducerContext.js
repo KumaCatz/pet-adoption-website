@@ -1,8 +1,5 @@
 import React from "react";
 
-const userDataReducerContext = React.createContext({
-  userData: {},
-  dispatchUserData: () => {},
-})
+const userDataReducerContext = React.createContext()
 
 export default userDataReducerContext
