@@ -7,13 +7,17 @@ import { userDataReducerActions } from '@/app/reducers/userDataReducer'
 
 const LoginModal = ({ isLogged, setIsLogged, isShow }) => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
-  const [userLogin, setUserLogin] = useState('')
-  const [userPassword, setUserPassword] = useState('')
+  const [loginUsername, setLoginUsername] = useState('')
+  const [loginPassword, setLoginPassword] = useState('')
 
   function validateLogin(e) {
     e.preventDefault()
 
-    dispatchUserData({ type: userDataReducerActions.LOGIN, username: userLogin, password: userPassword })
+    dispatchUserData({
+      type: userDataReducerActions.LOGIN,
+      username: loginUsername,
+      password: loginPassword,
+    })
     console.log(userData)
     setIsLogged(!isLogged)
   }
@@ -23,9 +27,9 @@ const LoginModal = ({ isLogged, setIsLogged, isShow }) => {
       { isShow &&
       <form onSubmit={validateLogin}>
       Provide login:
-      <input type='text' onChange={(e) => setUserLogin(e.target.value)} />
+      <input type='text' onChange={(e) => setLoginUsername(e.target.value)} />
       Provide password:
-      <input type='password' onChange={(e) => setUserPassword(e.target.value)} />
+      <input type='password' onChange={(e) => setLoginPassword(e.target.value)} />
       <button type='submit'>Submit</button>
       </form>
       }
