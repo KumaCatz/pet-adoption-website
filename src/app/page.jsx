@@ -25,23 +25,21 @@ export default function Homepage() {
       {isLogged ?
         <Welcome /> 
         :
-        <>
-          <header>
+        <div className='flex flex-row'>
+          <header className='grow'>
             <h1>Welcome to Pet Project</h1>
             <p>We're here to help you find your perfect companion</p>
+            <button><Link href='./search'>Start Searching</Link></button>
           </header>
-          <button><Link href='./search'>Start Searching</Link></button>
-          <button onClick={() => setIsShow(!isShow)}>Login</button>
-          <LoginModal
-            isLogged={isLogged}
-            setIsLogged={setIsLogged}
-            isShow={isShow}
-          />
-          <SignupModal />
-        </>
+          <section className='grow'>
+            <LoginModal
+              isLogged={isLogged}
+              setIsLogged={setIsLogged}
+            />
+            <SignupModal />
+          </section>
+        </div>
       }
-      <Link href='/mypets'>My Pets! :)</Link>
-      <Link href='/profile'>my profile page</Link>
       <div onClick={() => setIsLogged(!isLogged)}>LogIn/LogOut</div>
     </userDataReducerContext.Provider>
   )
