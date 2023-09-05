@@ -8,9 +8,9 @@ export const userDataReducer = (state, action) => {
   switch (action.type) {
     case userDataReducerActions.LOGIN:
       return {
-        ...state,
         'username': action.username,
         'password': action.password,
+        ...state,
       }
     case userDataReducerActions.COMPARE_PASSWORD:
       return console.log('hello reducer :)')

@@ -5,7 +5,7 @@ import React, { useContext, useState } from 'react'
 import userDataReducerContext from '@/app/contexts/userDataReducerContext'
 import { userDataReducerActions } from '@/app/reducers/userDataReducer'
 
-const LoginModal = ({ isLogged, setIsLogged }) => {
+const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
   const [loginUsername, setLoginUsername] = useState('')
   const [loginPassword, setLoginPassword] = useState('')
@@ -20,7 +20,6 @@ const LoginModal = ({ isLogged, setIsLogged }) => {
       password: loginPassword,
     })
     console.log(userData)
-    setIsLogged(!isLogged)
   }
 
   return (
