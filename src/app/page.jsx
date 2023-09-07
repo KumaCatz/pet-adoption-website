@@ -1,19 +1,20 @@
 'use client'
 
-import React, { useState } from 'react'
-
+import React, { useContext } from 'react'
 import Link from 'next/link'
 
 import LoginModal from "@/components/LoginModal"
 import SignupModal from '@/components/SignupModal'
 import Welcome from '../components/Welcome'
 
+import userDataReducerContext from './contexts/userDataReducerContext'
+
 export default function Homepage() {
-  const [isLogged, setIsLogged] = useState(false)
+  const { userData } = useContext(userDataReducerContext)
 
   return (
     <>
-      {isLogged ?
+      {userData.id ?
         <Welcome />
         :
         <div className='flex flex-row'>
@@ -28,7 +29,7 @@ export default function Homepage() {
           </section>
         </div>
       }
-      <div onClick={() => setIsLogged(!isLogged)}>LogIn/LogOut</div>
+      <div >clear cache</div>
     </>
   )
 }

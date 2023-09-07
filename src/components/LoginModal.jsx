@@ -7,17 +7,24 @@ import { userDataReducerActions } from '@/app/reducers/userDataReducer'
 
 const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
-  const [loginUsername, setLoginUsername] = useState('')
-  const [loginPassword, setLoginPassword] = useState('')
+  const [loginForm, setLoginForm] = useState({})
   const [isShow, setIsShow] = useState(false)
+
+  const handleChange = (value, key) => {
+    setLoginForm((pre) => {
+      return {
+        ...pre,
+        [key]: value
+      }
+    })
+  }
 
   function validateLogin(e) {
     e.preventDefault()
 
     dispatchUserData({
       type: userDataReducerActions.LOGIN,
-      username: loginUsername,
-      password: loginPassword,
+      user: loginForm
     })
     console.log(userData)
   }
@@ -26,13 +33,13 @@ const LoginModal = () => {
     <div>
       <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white'>Login</button>
       { isShow &&
-      <form onSubmit={validateLogin}>
-      Provide login:
-      <input type='text' onChange={(e) => setLoginUsername(e.target.value)} />
-      Provide password:
-      <input type='password' onChange={(e) => setLoginPassword(e.target.value)} />
-      <button type='submit'>Submit</button>
-      </form>
+        <form onSubmit={validateLogin}>
+          Provide email:
+          <input type='email' onChange={(e) => handleChange(e.target.value, "email")} />
+          Provide password:
+          <input type='password' onChange={(e) => handleChange(e.target.value, "password")} />
+          <button type='submit'>Submit</button>
+        </form>
       }
     </div>
   )

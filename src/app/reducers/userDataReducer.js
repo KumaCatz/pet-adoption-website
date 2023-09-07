@@ -1,19 +1,21 @@
 export const userDataReducerActions = {
   LOGIN: 'LOGIN',
-  COMPARE_PASSWORD: 'COMPARE_PASSWORD',
+  REGISTER_NEW: 'REGISTER_NEW',
   SORT_BY_DATE: 'SORT_BY_DATE',
 }
 
 export const userDataReducer = (state, action) => {
-  switch (action.type) {
+  const { type, user, newUser } = action
+
+  switch (type) {
     case userDataReducerActions.LOGIN:
       return {
-        'username': action.username,
-        'password': action.password,
-        ...state,
+        ...user,
       }
-    case userDataReducerActions.COMPARE_PASSWORD:
-      return console.log('hello reducer :)')
+    case userDataReducerActions.REGISTER_NEW:
+      return {
+        ...newUser
+      }
     case userDataReducerActions.SORT_BY_DATE:
       return console.log('hello reducer :)')
     default:

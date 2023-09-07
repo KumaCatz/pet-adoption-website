@@ -1,9 +1,13 @@
 import axios from "axios"
-import { useState } from "react"
+import { useState, useContext } from "react"
+import userDataReducerContext from "@/app/contexts/userDataReducerContext"
+import { userDataReducerActions } from "@/app/reducers/userDataReducer"
+import { REG_NEW_USER } from '../utils/api'
 
 function SignupModal() {
   const [isShow, setIsShow] = useState(false)
   const [registerForm, setRegisterForm] = useState({})
+  const { userData, dispatchUserData } = useContext(userDataReducerContext)
 
   const handleChange = (value, key) => {
     setRegisterForm((pre) => {
@@ -12,18 +16,26 @@ function SignupModal() {
         [key]: value
       }
     })
+    dispatchUserData({
+      type: userDataReducerActions.REGISTER_NEW,
+      newUser: registerForm
+    })
   }
 
   const registerNewUser = async (e) => {
     e.preventDefault()
-    console.log(registerForm)
-    axios.post('http://localhost:2500/users', registerForm)
-      .then(function(res) {
-        console.log(res)
-      })
-      .catch(function (err) {
-        console.log(err)
-      })
+
+
+
+    REG_NEW_USER('/', userData)
+
+    // axios.post('http://localhost:2500/users', registerForm)
+    //   .then(function(res) {
+    //     console.log(res)
+    //   })
+    //   .catch(function (err) {
+    //     console.log(err)
+    //   })
   }
 
   return (

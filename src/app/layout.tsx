@@ -20,7 +20,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [userData, dispatchUserData] = useReducer(userDataReducer, [])
+  const [userData, dispatchUserData] = useReducer(userDataReducer, {})
   return (
     <html lang="en">
       {/* <body className={inter.className}> */}
