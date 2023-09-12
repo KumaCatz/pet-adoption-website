@@ -10,10 +10,7 @@ app.use(cors())
 app.use(express.json());
 
 app.post('/', (req, res) => {
-  const data = users.GET()
-  const dataParsed = json.parse(data)
-  const newDb = dataParsed.push(req.body)
-  fs.writeFileSync('src/server/db/users.json', JSON.stringify(newDb))
+  users.add(req.body)
   res.send("okay")
 })
 app.listen(2500, () => {

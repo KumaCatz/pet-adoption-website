@@ -6,8 +6,16 @@ class DB {
     this.path = `src/server/db/${name}.json`
   }
 
-  GET = () => {
-    return fs.readFileSync(this.path)
+  getData = () => {
+    const json = fs.readFileSync(this.path)
+    const parsed = JSON.parse(json)
+    return parsed
+  }
+
+  add = (body) => {
+    const arr = this.getData()
+    arr.push({...body})
+    fs.writeFileSync(this.path, JSON.stringify(arr))
   }
 }
 

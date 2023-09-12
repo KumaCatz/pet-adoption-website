@@ -2,7 +2,7 @@ import axios from "axios"
 import { useState, useContext } from "react"
 import userDataReducerContext from "@/app/contexts/userDataReducerContext"
 import { userDataReducerActions } from "@/app/reducers/userDataReducer"
-import { REG_NEW_USER } from '../utils/api'
+import { POST_NEW_USER } from '../utils/api'
 
 function SignupModal() {
   const [isShow, setIsShow] = useState(false)
