@@ -27,9 +27,11 @@ export default function Homepage() {
               <button className='h-1/4 w-2/5 border-black border-solid border-2'><Link href='./search'>Start Searching</Link></button>
             </div>
           </header>
-          <section className='w-1/2 flex flex-col'>
+          <section className='w-1/2 flex items-center justify-center'>
+          <div className='flex flex-col border-black border-solid border-2 w-1/2 h-3/5 bg-lime-100 mb-10'>
             <LoginModal />
             <SignupModal />
+          </div>
           </section>
         </div>
       }

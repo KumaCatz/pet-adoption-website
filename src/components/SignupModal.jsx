@@ -27,7 +27,7 @@ function SignupModal() {
 
 
 
-    REG_NEW_USER('/', userData)
+    POST_NEW_USER('/', userData)
 
     // axios.post('http://localhost:2500/users', registerForm)
     //   .then(function(res) {
@@ -40,7 +40,7 @@ function SignupModal() {
 
   return (
     <div className='basis-1/2 flex items-center justify-center'>
-      <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6 mb-10'>create new account</button>
+      <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6'>create new account</button>
       { isShow &&
         <>
           <div
@@ -48,7 +48,7 @@ function SignupModal() {
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t">
-                  Hi
+                  <p>Welcome!</p><button onClick={() => setIsShow(!isShow)}>close</button>
                 </div>
                 <div className="relative p-6 flex-auto">
                   <form onSubmit={registerNewUser}>
