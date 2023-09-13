@@ -35,7 +35,7 @@ export default function Homepage() {
           </section>
         </div>
       }
-      <div className='fixed bottom-0'>clear cache</div>
+      <div className='fixed bottom-0' onClick={() => console.log(userData)}>userData</div>
     </>
   )
 }

@@ -5,7 +5,7 @@ export const userDataReducerActions = {
 }
 
 export const userDataReducer = (state, action) => {
-  const { type, user, newUser } = action
+  const { type, payload, user, newUser } = action
 
   switch (type) {
     case userDataReducerActions.LOGIN:
@@ -14,7 +14,8 @@ export const userDataReducer = (state, action) => {
       }
     case userDataReducerActions.REGISTER_NEW:
       return {
-        ...newUser
+        id: payload.id,
+        ...payload.body,
       }
     case userDataReducerActions.SORT_BY_DATE:
       return console.log('hello reducer :)')

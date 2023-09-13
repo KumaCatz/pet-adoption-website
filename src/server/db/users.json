@@ -1,1 +1,6 @@
-[{"email":"jasi@jdsk.coj","password":"das","first-name":"das","last-name":"das","phone":"312"}]
+[
+  {
+    "id": 1,
+    "email": "das@das.dfsg"
+  }
+]

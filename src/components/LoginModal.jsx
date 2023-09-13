@@ -4,6 +4,7 @@ import React, { useContext, useState } from 'react'
 
 import userDataReducerContext from '@/app/contexts/userDataReducerContext'
 import { userDataReducerActions } from '@/app/reducers/userDataReducer'
+import { GET_USER } from '@/utils/api'
 
 const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
@@ -19,14 +20,15 @@ const LoginModal = () => {
     })
   }
 
-  function validateLogin(e) {
+  const loginUser = async (e) => {
     e.preventDefault()
 
+    const res = await POST('/users/login', loginForm)
+    console.log(res)
     dispatchUserData({
       type: userDataReducerActions.LOGIN,
       user: loginForm
     })
-    console.log(userData)
     setIsShow(!isShow)
   }
 
@@ -43,9 +45,9 @@ const LoginModal = () => {
                   <p>Welcome back!</p><button onClick={() => setIsShow(!isShow)}>close</button>
                 </div>
                 <div className="relative p-6 flex-auto">
-                  <form onSubmit={validateLogin}>
+                  <form onSubmit={loginUser}>
                     Provide email:
-                    <input type='email' onChange={(e) => handleChange(e.target.value, "email")} />
+                    <input  onChange={(e) => handleChange(e.target.value, "email")} />
                     Provide password:
                     <input type='password' onChange={(e) => handleChange(e.target.value, "password")} />
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">

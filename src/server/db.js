@@ -12,10 +12,37 @@ class DB {
     return parsed
   }
 
-  add = (body) => {
+  addData = (body) => {
     const arr = this.getData()
-    arr.push({...body})
-    fs.writeFileSync(this.path, JSON.stringify(arr))
+    const newId = arr.length + 1
+    arr.push({
+      id: newId,
+      ...body
+    })
+    fs.writeFileSync(this.path, JSON.stringify(arr, null, 2))
+    return newId
+  }
+  
+  compareData = (body, par) => {
+    const arr = this.getData()
+
+    let result
+    for (const obj of arr) {
+      let i = 0
+
+    }
+
+    functionToBerepeated = () => {
+      while (i < par.length) {
+        result = (obj[par[i]] === body[par[i]]) 
+        i++
+        if (result) {
+          functionToBerepeated()
+        }
+      }
+    }
+
+
   }
 }
 

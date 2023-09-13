@@ -1,13 +1,15 @@
-import axios from "axios"
+
 import { useState, useContext } from "react"
+
 import userDataReducerContext from "@/app/contexts/userDataReducerContext"
 import { userDataReducerActions } from "@/app/reducers/userDataReducer"
-import { POST_NEW_USER } from '../utils/api'
+import { POST } from '../utils/api'
 
 function SignupModal() {
   const [isShow, setIsShow] = useState(false)
   const [registerForm, setRegisterForm] = useState({})
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
+
 
   const handleChange = (value, key) => {
     setRegisterForm((pre) => {
@@ -16,26 +18,22 @@ function SignupModal() {
         [key]: value
       }
     })
-    dispatchUserData({
-      type: userDataReducerActions.REGISTER_NEW,
-      newUser: registerForm
-    })
+
   }
 
   const registerNewUser = async (e) => {
     e.preventDefault()
 
+    const res = await POST('/users/register', registerForm)
+    dispatchUserData({
+      type: userDataReducerActions.REGISTER_NEW,
+      payload: {
+        id: res.id,
+        body: registerForm,
+      }
+    })
 
-
-    POST_NEW_USER('/', userData)
-
-    // axios.post('http://localhost:2500/users', registerForm)
-    //   .then(function(res) {
-    //     console.log(res)
-    //   })
-    //   .catch(function (err) {
-    //     console.log(err)
-    //   })
+    setIsShow(!isShow)
   }
 
   return (
@@ -59,9 +57,9 @@ function SignupModal() {
                     Re-enter password:
                     <input type='password' />
                     Provide first name:
-                    <input type='text' onChange={(e) => handleChange(e.target.value, "first-name")} />
+                    <input type='text' onChange={(e) => handleChange(e.target.value, "firstName")} />
                     Provide last name:
-                    <input type='text' onChange={(e) => handleChange(e.target.value, "last-name")} />
+                    <input type='text' onChange={(e) => handleChange(e.target.value, "lastName")} />
                     Provide phone number:
                     <input type='tel' onChange={(e) => handleChange(e.target.value, "phone")} />
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
