@@ -1,8 +1,6 @@
 const express = require('express')
 const cors = require('cors')
-const DB = require('./db')
 const app = express()
-const users = new DB('users')
 
 app.use(cors())
 app.use(express.json());
@@ -12,20 +10,25 @@ const middleWare = (req, res, next) => {
 }
 app.use(middleWare)
 
-app.post('/users/register', (req, res) => {
-  const newId = users.addData(req.body)
-  res.send({id: newId})
-})
-app.post('/users/login', (req, res) => {
-  users.compareData(req.body, ['email', 'password'])
+app.use('/users', require('./routes/users.routes'))
 
-})
-app.get('/users', (req, res, next) => {
-  res.send("bitchin")
-})
+app.use('/auth', require('./routes/auth.routes'))
+
 
 app.use((err, req, res, next) => {
-  res.send(err)
+  try {
+    const [statusCode, msg] = err
+
+    res.status(statusCode).send({
+      error: true,
+      message: msg,
+    })  
+  } catch (error) {
+    res.status(500).send({
+      error: true,
+      message: error,
+    })
+  }
 })
 
 app.listen(2500, () => {

@@ -4,7 +4,7 @@ import React, { useContext, useState } from 'react'
 
 import userDataReducerContext from '@/app/contexts/userDataReducerContext'
 import { userDataReducerActions } from '@/app/reducers/userDataReducer'
-import { GET_USER } from '@/utils/api'
+import { POST } from '@/utils/api'
 
 const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
@@ -21,15 +21,19 @@ const LoginModal = () => {
   }
 
   const loginUser = async (e) => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    const res = await POST('/users/login', loginForm)
-    console.log(res)
-    dispatchUserData({
-      type: userDataReducerActions.LOGIN,
-      user: loginForm
-    })
-    setIsShow(!isShow)
+      const res = await POST('/auth/login', loginForm)
+  
+      dispatchUserData({
+        type: userDataReducerActions.LOGIN,
+        user: res
+      })
+      // setIsShow(!isShow)  
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -52,6 +56,7 @@ const LoginModal = () => {
                     <input type='password' onChange={(e) => handleChange(e.target.value, "password")} />
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                       <button type='submit'>Submit</button>
+                      <div onClick={() => console.log(userData)}>form(is fine)</div>
                     </div>
                   </form>
                 </div>

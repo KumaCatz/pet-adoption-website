@@ -26,23 +26,13 @@ class DB {
   compareData = (body, par) => {
     const arr = this.getData()
 
-    let result
-    for (const obj of arr) {
-      let i = 0
+    return arr.some(ele => ele[par] === body[par])
+  }
 
-    }
+  getDataByPar = (body, par) => {
+    const arr = this.getData()
 
-    functionToBerepeated = () => {
-      while (i < par.length) {
-        result = (obj[par[i]] === body[par[i]]) 
-        i++
-        if (result) {
-          functionToBerepeated()
-        }
-      }
-    }
-
-
+    return arr.find(ele => ele[par] === body[par])
   }
 }
 
