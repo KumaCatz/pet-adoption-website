@@ -22,18 +22,25 @@ function SignupModal() {
   }
 
   const registerNewUser = async (e) => {
-    e.preventDefault()
+    try {
+      e.preventDefault()
 
-    const res = await POST('/users/register', registerForm)
-    dispatchUserData({
-      type: userDataReducerActions.REGISTER_NEW,
-      payload: {
-        id: res.id,
-        body: registerForm,
-      }
-    })
+      const res = await POST('/auth/register', registerForm)
+      
+      if(!res) {return}
 
-    setIsShow(!isShow)
+      dispatchUserData({
+        type: userDataReducerActions.REGISTER_NEW,
+        payload: {
+          id: res.id,
+          body: registerForm,
+        }
+      })
+  
+      setIsShow(!isShow)  
+    } catch(error) {
+      console.log(error)
+    }
   }
 
   return (

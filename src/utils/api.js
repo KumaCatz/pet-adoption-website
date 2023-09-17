@@ -6,8 +6,8 @@ const api = axios.create({
 
 export const POST = async (url, body) => {
   try {
-    const resp = await api.post(url, body)
-    return resp.data
+    const res = await api.post(url, body)
+    return res.data
   } catch(error) {
     handleError(error)
   }
@@ -23,5 +23,6 @@ export const POST = async (url, body) => {
 // }
 
 const handleError = (error) => {
+  console.log(error)
   alert(error)
 }

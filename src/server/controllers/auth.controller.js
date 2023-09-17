@@ -7,6 +7,7 @@ module.exports = {
   loginUser: async (req, res, next) => {
     try{
       const user = users.getDataByPar(req.body, 'email')
+
       if(!user) {
         return next(ERR_EMAIL_OR_PASSWORD)
       }
