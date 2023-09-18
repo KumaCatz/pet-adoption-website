@@ -10,6 +10,7 @@ const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
   const [loginForm, setLoginForm] = useState({})
   const [isShow, setIsShow] = useState(false)
+  const [error, setError] = useState("")
 
   const handleChange = (value, key) => {
     setLoginForm((pre) => {
@@ -21,24 +22,30 @@ const LoginModal = () => {
   }
 
   const loginUser = async (e) => {
-    try {
-      e.preventDefault()
 
-      const res = await POST('/auth/login', loginForm)
-  
-      dispatchUserData({
-        type: userDataReducerActions.LOGIN,
-        user: res
-      })
-      // setIsShow(!isShow)  
-    } catch (error) {
-      console.log(error)
-    }
+    e.preventDefault()
+
+    POST('/auth/login', loginForm)
+    .then(
+      (data) => {
+        return dispatchUserData({
+          type: userDataReducerActions.LOGIN,
+          user: data
+        })    
+      }
+    )
+    .catch(
+      () => {
+        setError("dang :(")
+        setIsShow(!isShow)
+      }
+    )
   }
 
   return (
     <div className='basis-1/2 flex items-center justify-center'>
       <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6'>Login</button>
+      <div>{error}</div>
       { isShow &&
         <>
           <div
