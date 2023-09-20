@@ -5,7 +5,7 @@ import React, { useReducer } from 'react'
 import type { Metadata } from 'next'
 // import { Inter } from 'next/font/google'
 
-import { userDataReducer } from './reducers/userDataReducer.js'
+import { initUserData, userDataReducer } from './reducers/userDataReducer.js'
 import userDataReducerContext from './contexts/userDataReducerContext.js'
 
 // const inter = Inter({ subsets: ['latin'] })
@@ -20,7 +20,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-  const [userData, dispatchUserData] = useReducer(userDataReducer, {})
+  const [userData, dispatchUserData] = useReducer(userDataReducer, initUserData)
   return (
     <html lang="en">
       {/* <body className={inter.className}> */}

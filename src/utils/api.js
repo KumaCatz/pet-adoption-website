@@ -13,8 +13,9 @@ export const POST = (url, body) => {
       }
       res(resp.data)
     } catch(error) {
-      handleError(error)
-      rej()
+      const {data, status} = error.response
+      handleError(data, status)
+      rej(data)
     }
   })
 }
@@ -28,7 +29,10 @@ export const POST = (url, body) => {
 //   }
 // }
 
-const handleError = (error) => {
-  console.log(error)
-
+const handleError = (data, status) => {
+  console.log({
+    "error": data.error,
+    "status": status,
+    "message": data.message
+  })
 }

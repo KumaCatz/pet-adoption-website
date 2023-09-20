@@ -45,7 +45,7 @@ function SignupModal() {
 
   return (
     <div className='basis-1/2 flex items-center justify-center'>
-      <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6'>create new account</button>
+      <button onClick={() => setIsShow(!isShow)} className='border-solid w-2/3 h-3/4 border bg-white p-6'>Create Account</button>
       { isShow &&
         <>
           <div

@@ -8,15 +8,15 @@ import { POST } from '@/utils/api'
 
 const LoginModal = () => {
   const { userData, dispatchUserData } = useContext(userDataReducerContext)
-  const [loginForm, setLoginForm] = useState({})
   const [isShow, setIsShow] = useState(false)
   const [error, setError] = useState("")
 
   const handleChange = (value, key) => {
-    setLoginForm((pre) => {
-      return {
-        ...pre,
-        [key]: value
+    dispatchUserData({
+      type: userDataReducerActions.UPDATE_KEY_VALUE,
+      payload: {
+        key: key,
+        value: value  
       }
     })
   }
@@ -25,19 +25,20 @@ const LoginModal = () => {
 
     e.preventDefault()
 
-    POST('/auth/login', loginForm)
+    POST('/auth/login', userData)
     .then(
       (data) => {
         return dispatchUserData({
           type: userDataReducerActions.LOGIN,
-          user: data
+          payload: {
+            user: data
+          }
         })    
       }
     )
     .catch(
-      () => {
-        setError("dang :(")
-        setIsShow(!isShow)
+      (error) => {
+        setError(error.message)
       }
     )
   }
@@ -45,7 +46,6 @@ const LoginModal = () => {
   return (
     <div className='basis-1/2 flex items-center justify-center'>
       <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6'>Login</button>
-      <div>{error}</div>
       { isShow &&
         <>
           <div
@@ -62,6 +62,7 @@ const LoginModal = () => {
                     Provide password:
                     <input type='password' onChange={(e) => handleChange(e.target.value, "password")} />
                     <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
+                      <div>{error}</div>
                       <button type='submit'>Submit</button>
                       <div onClick={() => console.log(userData)}>form(is fine)</div>
                     </div>
