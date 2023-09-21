@@ -12,27 +12,31 @@ class DB {
     return parsed
   }
 
+  saveData = (data) => {
+    fs.writeFileSync(this.path, JSON.stringify(data, null, 2))
+  }
+
   addData = (body) => {
     const arr = this.getData()
-    const newId = arr.length + 1
+    const newId = self.crypto.randomUUID()
     arr.push({
       id: newId,
       ...body
     })
-    fs.writeFileSync(this.path, JSON.stringify(arr, null, 2))
+    this.saveData(arr)
     return newId
   }
   
-  compareData = (body, par) => {
+  compareDataByKeyValue = (body, keyProp) => {
     const arr = this.getData()
 
-    return arr.some(ele => ele[par] === body[par])
+    return arr.some(ele => ele[keyProp] === body[keyProp])
   }
 
-  getDataByPar = (body, par) => {
+  getDataByKeyValue = (body, keyProp) => {
     const arr = this.getData()
 
-    return arr.find(ele => ele[par] === body[par])
+    return arr.find(ele => ele[keyProp] === body[keyProp])
   }
 }
 
