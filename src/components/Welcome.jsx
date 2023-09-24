@@ -8,12 +8,12 @@ const Welcome = () => {
   const { userData } = useContext(userDataReducerContext)
 
   return (
-    <>
-      <div>Welcome {userData.firstName}! :)</div>
+    <div>
+      <h1>Welcome {userData.firstName}! :)</h1>
       <button><Link href='/search'>Search</Link></button>
       <button><Link href='/mypets'>My Pets</Link></button>
       <button><Link href='/profile'>Profile</Link></button>
-    </>
+    </div>
   )
 }
 

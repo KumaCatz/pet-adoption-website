@@ -44,7 +44,7 @@ const LoginModal = () => {
   }
 
   return (
-    <div className='basis-1/2 flex items-center justify-center'>
+    <div className=''>
       <button onClick={() => setIsShow(!isShow)} className='border-solid border bg-white p-6'>Login</button>
       { isShow &&
         <>
