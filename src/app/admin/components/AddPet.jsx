@@ -73,21 +73,21 @@ export default function AddPet() {
       </div>
       <div className={itemStyle}>
         <p>Hypoallergenic</p>
-        <input id="yes" type='radio' name="hypoallergenic" value="yes" onChange={() => handleChange('hypoallergenic', e.target.value)} />
+        <input id="yes" type='radio' name="hypoallergenic" value="yes" onChange={(e) => handleChange('hypoallergenic', e.target.value)} />
         <label>yes</label>
-        <input id="no" type='radio' name="hypoallergenic" value="no" onChange={() => handleChange('hypoallergenic', e.target.value)} />
+        <input id="no" type='radio' name="hypoallergenic" value="no" onChange={(e) => handleChange('hypoallergenic', e.target.value)} />
         <label>no</label>
       </div>
       <div className={itemStyle}>
         <p>Dietary Restrictions</p>
-        <input id="yes" type='radio' name="dietary_restrictions" value="yes" onChange={() => handleChange('dietary_restrictions', e.target.value)} />
+        <input id="yes" type='radio' name="dietary_restrictions" value="yes" onChange={(e) => handleChange('dietary_restrictions', e.target.value)} />
         <label>yes</label>
-        <input id="no" type='radio' name="dietary_restrictions" value="no" onChange={() => handleChange('dietary_restrictions', e.target.value)} />
+        <input id="no" type='radio' name="dietary_restrictions" value="no" onChange={(e) => handleChange('dietary_restrictions', e.target.value)} />
         <label>no</label>
       </div>
       <div className={itemStyle}>
         <label htmlFor="breed">Breed</label>
-        <input id='breed' type='text' onChange={() => handleChange('breed', e.target.value)} />
+        <input id='breed' type='text' onChange={(e) => handleChange('breed', e.target.value)} />
       </div>
       <div className="flex-[0_1_100%] text-center">
         <button onClick={submitPet} className="m-4 p-2 border-solid border-black border-2">ADD</button>
