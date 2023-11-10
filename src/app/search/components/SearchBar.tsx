@@ -4,8 +4,8 @@ export default function SearchBar() {
     <div>Basic Search</div>
       <label htmlFor="pet">types of pets available:</label>
       <select name='pet' id='pet'>
-        <option value="thing">thing</option>
-        types of pets available list
+        <option value="dog">dog</option>
+        <option value="cat">cat</option>
       </select>
     <div>Advanced Search</div>
       <label htmlFor="status">Status:</label>

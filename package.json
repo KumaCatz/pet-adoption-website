@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "next",
     "lint": "next lint",
-    "nodemon": "nodemon src/server/server"
+    "server": "nodemon src/server/server"
   },
   "dependencies": {
     "@types/node": "20.5.6",
