@@ -53,7 +53,7 @@ export default function AddPet() {
       </div>
       <div className={itemStyle}>
         <label htmlFor="picture">Picture</label>
-        <input id='picture' type='file' onChange={(e) => handleChange('picture', e.target.value)} />
+        <input id='picture' type='file' name='picture' onChange={(e) => handleChange('picture', e.target.value)} />
       </div>
       <div className={itemStyle}>
         <label htmlFor="height">Height</label>
