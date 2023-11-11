@@ -20,9 +20,13 @@ export default function AddPet() {
   const submitPet = async (e) => {
     e.preventDefault()
 
-    console.log('hey')
-    POST('/pets/register', petData, {
-      method: 'post',
+    const formData = new FormData()
+    for (const key in petData) {
+      formData.append(key, petData[key])
+    }
+    console.log(formData)
+
+    POST('/pets/register', formData, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
