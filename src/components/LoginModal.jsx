@@ -28,6 +28,8 @@ const LoginModal = () => {
     POST('/auth/login', userData)
     .then(
       (data) => {
+        console.log(data)
+        // ta voltando alguma string 'hi' de nao sei aonde
         return dispatchUserData({
           type: userDataReducerActions.LOGIN,
           payload: {
